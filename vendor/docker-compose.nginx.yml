@@ -1,0 +1,26 @@
+services:
+  # Nginx web server service
+  nginx:
+    image: nginx:1.30.4
+    restart: always
+    ports:
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./certs/server.crt:/etc/nginx/ssl/server.crt
+      - ./certs/server.key:/etc/nginx/ssl/server.key
+      - ./certs/ca.crt:/etc/nginx/ssl/ca.crt
+    networks:
+      - app-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+# Empty volumes
+volumes: {}
+
+# External network
+networks:
+  app-network:
+    external: true

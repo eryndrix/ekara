@@ -1,0 +1,1 @@
+0 0 * * * cd /var/www/html && /usr/local/bin/php artisan schedule:run --no-ansi

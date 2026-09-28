@@ -1,0 +1,35 @@
+services:
+  # PHP application service
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    user: "${UID:-1000}:${GID:-1000}"
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - ./certs/client.crt:/certs/client.crt:ro
+      - ./certs/client.key:/certs/client.key:ro
+      - ./certs/ca.crt:/certs/ca.crt:ro
+      - ./certs/gigachat.crt:/certs/gigachat.crt:ro
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./src:/var/www/html
+    working_dir: /var/www/html
+    networks:
+      - app-network
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+
+# Empty volumes
+volumes: {}
+
+# External network
+networks:
+  app-network:
+    external: true

@@ -1,0 +1,21 @@
+[ server_cert ]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+
+[ client_cert ]
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = clientAuth
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = localhost
+DNS.2 = nginx
+DNS.3 = postgres
+DNS.4 = redis
+DNS.5 = rabbitmq
+DNS.6 = client
+IP.1 = 127.0.0.1
+IP.2 = ::1

@@ -1,0 +1,43 @@
+{
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "users": [
+    {
+      "name": "rmq_service_Urjl7FEM",
+      "password": "PoQHEBcuTIDIV6vKy3hv",
+      "tags": "administrator"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "rmq_service_Urjl7FEM",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "default",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-max-priority": 10
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false
+    }
+  ]
+}

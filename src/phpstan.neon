@@ -1,0 +1,22 @@
+parameters:
+    level: max
+    strictRules:
+        allRules: true
+    fileExtensions:
+        - php
+    paths:
+        - app/
+    tmpDir: storage/framework/cache/phpstan
+    reportUnmatchedIgnoredErrors: true
+    treatPhpDocTypesAsCertain: false
+    checkBenevolentUnionTypes: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkExplicitMixed: true
+    checkImplicitMixed: true
+    checkMissingTypehints: true
+
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - phar://./vendor/phpstan/phpstan/phpstan.phar/conf/bleedingEdge.neon
+    - vendor/larastan/larastan/extension.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
